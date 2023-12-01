@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+    
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3307/photogram?serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false
+    username: cos
+    password: cos1234
+    
+  jpa:
+    open-in-view: true ##view 단까지 세션을 오픈함 false로 바꾸면 서비스단에서 종료가아니라 아니라 컨트롤러단을 거치고 세션이 종료가 되면 이미지 못 불러옴 
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+      
+  servlet:
+    multipart: 
+      enabled: true
+      max-file-size: 3MB
+
+  security:
+    user:
+      name: test
+      password: 1234   
+      
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 248618281414680
+            client-secret: 9646c7bff98ac3ddc284893170a87c80
+            scope:
+            - public_profile
+            - email
+          
+          
+
+file:
+  path: C:/instarwirkspace/springbootwork/upload/
